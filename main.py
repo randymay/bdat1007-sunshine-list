@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # [START gae_python37_app]
-from flask import Flask
+from flask import Flask, render_template
 
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
@@ -22,10 +22,28 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+#def hello():
+#    """Return a friendly HTTP greeting."""
+#    return 'Hello World!'
+def main():
+    """Return a pre-defined web-template."""
+    return render_template('index.html')
 
+@app.route('/dashboard')
+#def hello():
+#    """Return a friendly HTTP greeting."""
+#    return 'Hello World!'
+def dashboard():
+    """Return a dashboard webpage."""
+    return render_template('dashboards.html')
+
+@app.route('/about')
+#def hello():
+#    """Return a friendly HTTP greeting."""
+#    return 'Hello World!'
+def about():
+    """Return a dashboard webpage."""
+    return render_template('about.html')
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
