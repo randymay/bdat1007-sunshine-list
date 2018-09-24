@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Social Data Mining WebApplication</title> 
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: rgb(255, 255, 255);
+        }
+        
+        .nav ul {
+            list-style: none;
+            background-color: #444;
+            text-align: left;
+            padding: 0;
+            margin: 0;
+        }
+        .nav li {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2em;
+            line-height: 60px;
+            height: 50px;
+            border-bottom: 1px solid #888;
+            text-align:center;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            transition: .3s background-color;
+        }
+        
+        .nav a:hover {
+            background-color: #005f5f;
+        }
+        
+        .nav a.active {
+            background-color: #fff;
+            color: #444;
+            cursor: default;
+        }
+        
+        @media screen and (min-width: 600px) {
+            .nav li {
+            width: 120px;
+            border-bottom: none;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1.4em;
+            }
+        
+            /* Option 1 - Display Inline */
+            .nav li {
+            display: inline-block;
+            margin-right: -4px;
+            }
+        
+            /* Options 2 - Float
+            .nav li {
+            float: left;
+            }
+            .nav ul {
+            overflow: auto;
+            width: 600px;
+            margin: 0 auto;
+            }
+            .nav {
+            background-color: #444;
+            }
+            */
+        }
+
+        .general-info {
+            font-family: 'Oswald', sans-serif;
+            text-align:center;
+            background-color: #444;
+            border: 2px solid #444;
+            border-radius: 5px;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .general-info2 {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+        }  
+
+        .dashboards {
+            font-family: 'Oswald', sans-serif;
+            text-align:center;
+            background-color: #444;
+            border: 2px solid #444;
+            border-radius: 5px;
+            width: 31%;
+            margin-right: 18px;
+            margin-top: 10px;
+            color: white;
+            float:left;
+            height: 200px;
+        }
+
+        .ontario {
+            font-family: 'Oswald', sans-serif;
+            text-align:center;
+            background-color: #444;
+            border: 2px solid #444;
+            border-radius: 5px;
+            width: 31%;
+            margin-right: 18px;
+            margin-left: 18px;
+            margin-top: 10px;
+            color: white;
+            float: left;
+            height: 200px;
+        }
+
+        .download {
+            font-family: 'Oswald', sans-serif;
+            text-align:center;
+            background-color: #444;
+            border: 2px solid #444;
+            border-radius: 5px;
+            width: 30%;
+            margin-left: 19px;
+            margin-top: 10px;
+            color: white;
+            float: left;
+            height: 200px;
+        }
+
+        .footer {
+            font-family: 'Oswald', sans-serif;
+            position:absolute;
+            bottom:0;
+            margin-left: 10px;
+        }
+
+        button{
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;    
+            margin-top:40px;
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+    <header>
+        <div class="nav">
+          <ul>
+            <li class="home"><a class="active" href="/">Home</a></li>
+            <li class="tutorials"><a href="/dashboard">Dashboard</a></li>
+            <li class="about"><a href="/about">About</a></li>
+          </ul>
+        </div>
+      </header>
+ 
+    <div class="general-info">
+        <h1>Sunshine List Analysis</h1>
+        <p>Information on all public sector employees who were paid $100,000 or more in 2017 and are subject to the Public Sector Salary Disclosure Act.</p>
+    </div>
+
+    <div class="general-info2">
+        <div class="dashboards">
+            <h2>Dashboards</h2>
+            <p>Data Analysis provided in Charts</p>
+            <a href="/dashboard"><button>Go to Dashboards</button></a>
+        </div>
+
+        <div class="ontario">
+            <h2>More Information</h2>
+            <p>For more information visit Ontario Government Website</p>
+            <a href="https://www.ontario.ca/page/public-sector-salary-disclosure-2017-all-sectors-and-seconded-employees"><button>Learn More</button></a>
+        </div>
+
+        <div class="download">
+            <h2>Download the Data</h2>
+            <p>To Acces the data select the format and download</p>
+            <a href="https://files.ontario.ca/en-2017-pssd-compendium-20180320.xlsx"><button>Spreadsheet</button></a>
+            <a href="https://files.ontario.ca/en-2017-pssd-compendium-20180320-utf8.csv"><button>CSV</button></a>
+            <a href="https://files.ontario.ca/en-2017-pssd-compendium-20180320-utf8.json"><button>JSON</button></a>
+        </div>
+    </div>
+
+    <div>
+        <footer class="footer">
+                <p>&copy; Georgian College - 2018</p>
+        </footer>
+    </div>
+</body>
+ 
+</html>
