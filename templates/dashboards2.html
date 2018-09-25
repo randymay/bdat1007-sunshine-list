@@ -152,7 +152,7 @@
             color: initial;
             width: 60%;
         }
-      
+
         .chart-container {
             width: 1000px;
             height:600px;
@@ -170,8 +170,8 @@
         <div class="nav">
           <ul>
                 <li class="home"><a href="/">Home</a></li>
-                <li class="tutorials"><a class="active" href="/dashboard">Chart#1</a></li>
-                <li class="tutorials"><a href="/dashboard2">Chart#2</a></li>
+                <li class="tutorials"><a href="/dashboard">Chart#1</a></li>
+                <li class="tutorials"><a class="active" href="/dashboard2">Chart#2</a></li>
                 <li class="about"><a href="/about">About</a></li>
           </ul>
         </div>
@@ -196,14 +196,14 @@
                             data : [{% for item in values %}
                                         {{item}},
                                     {% endfor %}],
-                            backgroundColor:'#4e62a7'
+                            backgroundColor:'#692929'
                         }
                     ]
                 },
                 options: {
                     title: {
                         display: true,
-                        text: 'Number of Employers per Sector',
+                        text: 'Total Salary per Sector',
                         fontSize:18
                     },
                     legend:{
@@ -222,7 +222,7 @@
                         yAxes:[{
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Number of Employers'
+                                labelString: 'Total Salary Paid'
                             }
                         }]
                     }
