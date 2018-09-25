@@ -14,12 +14,13 @@
 
 # [START gae_python37_app]
 from flask import Flask, render_template, request
-import pymysql
-#import sqlalchemy
-#from sqlalchemy import create_engine
-#from sqlalchemy.orm import sessionmaker
-#from sqlalchemy.sql import select
-#from sqlalchemy import text
+#import pymysql
+import sqlalchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from google.cloud import storage
+from domain.SectorModule import Sector
+from domain.EmployerModule import Employer
 import json
 
 
@@ -27,15 +28,19 @@ import json
 # called `app` in `main.py`.
 app = Flask(__name__)
 
-db = pymysql.connect(host="35.237.247.30",    # your host, usually localhost
-                     user="bdat1007",         # your username
-                     passwd="password",  # your password
-                     db="sunshine_list")        # name of the data base
+#db = pymysql.connect(host="35.237.247.30",    # your host, usually localhost
+#                     user="bdat1007",         # your username
+#                     passwd="password",  # your password
+#                     db="sunshine_list")        # name of the data base
+# mysql+mysqldb://root@/<dbname>?unix_socket=/cloudsql/<projectid>:<instancename>
+#engine = create_engine('mysql+mysqldb://bdat1007:password@35.237.247.30/sunshine_list')
+engine = create_engine('mysql+pymysql://bdat1007:password@/sunshine_list?unix_socket=/cloudsql/bdat1007-sunshine-list:us-east1:sunshine-db')
 #engine = create_engine('mysql+pymysql://bdat1007:password@35.237.247.30/sunshine_list')
-#Session = sessionmaker(bind=engine)
-#session = Session()
-#conn = engine.connect()
-cur = db.cursor()
+Session = sessionmaker(bind=engine)
+session = Session()
+conn = engine.connect()
+
+# cur = db.cursor()
 
 @app.route('/')
 #def hello():
@@ -51,16 +56,13 @@ def main():
 #    return 'Hello World!'
 def dashboard():
     """Return a dashboard webpage."""
-    sector=[]
+    sectors=[]
     employers=[]
     if request.method == "GET":
-        cur.execute("SELECT sector_name FROM sector")
-        for row in cur:
-            sector.append(row[0])
-        cur.execute("SELECT total_employers FROM sector")
-        for row in cur:
-            employers.append(row[0])
-        return render_template('dashboards.html', values =employers, labels=sector)
+        for sector in session.query(Sector).order_by(Sector.totalEmployers.desc()):
+            sectors.append(sector.name)
+            employers.append(sector.totalEmployers)
+        return render_template('dashboards.html', values =employers, labels=sectors)
     else:
         return render_template('dashboards.html')
 
@@ -70,16 +72,13 @@ def dashboard():
 #    return 'Hello World!'
 def dashboard2():
     """Return a dashboard webpage."""
-    sector=[]
-    salary=[]
+    sectors=[]
+    salaries=[]
     if request.method == "GET":
-        cur.execute("SELECT sector_name FROM sector")
-        for row in cur:
-            sector.append(row[0])
-        cur.execute("SELECT total_salary_paid FROM sector")
-        for row in cur:
-            salary.append(row[0])
-        return render_template('dashboards2.html', values =salary, labels=sector)
+        for sector in session.query(Sector).order_by(Sector.totalSalaryPaid.desc()):
+            sectors.append(sector.name)
+            salaries.append(sector.totalSalaryPaid)
+        return render_template('dashboards2.html', values =salaries, labels=sectors)
     else:
         return render_template('dashboards2.html')
 
@@ -97,4 +96,3 @@ if __name__ == '__main__':
     # can be configured by adding an `entrypoint` to app.yaml.
     app.run(host='127.0.0.1', port=8080, debug=True)
 # [END gae_python37_app]
-db.close()
