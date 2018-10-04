@@ -34,7 +34,7 @@ app = Flask(__name__)
 #                     db="sunshine_list")        # name of the data base
 # mysql+mysqldb://root@/<dbname>?unix_socket=/cloudsql/<projectid>:<instancename>
 #engine = create_engine('mysql+mysqldb://bdat1007:password@35.237.247.30/sunshine_list')
-engine = create_engine('mysql+pymysql://bdat1007:password@/sunshine_list?unix_socket=/cloudsql/bdat1007-sunshine-list:us-east1:sunshine-db')
+engine = create_engine('mysql+pymysql://bdat1007:password@/sunshine_list?unix_socket=/cloudsql/bdat1007-sunshine-list:us-east1:new-sunshine-db')
 #engine = create_engine('mysql+pymysql://bdat1007:password@35.237.247.30/sunshine_list')
 Session = sessionmaker(bind=engine)
 session = Session()

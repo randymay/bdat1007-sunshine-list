@@ -38,7 +38,9 @@ def loadData():
     employeeCount = 0
 
     # Create a connection to the DB
-    engine = create_engine('mysql+mysqldb://bdat1007:password@35.237.247.30/sunshine_list')
+    engine = create_engine('mysql+mysqldb://bdat1007:password@35.196.230.121/sunshine_list')
+    # engine = create_engine('mysql+mysqldb://bdat1007:password@35.196.230.121/bdat1007-sunshine-list:us-east1:new-sunshine-db')
+
     Session = sessionmaker(bind=engine)
     session = Session()
 
